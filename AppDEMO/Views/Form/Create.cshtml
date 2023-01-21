@@ -1,0 +1,47 @@
+﻿
+    <form id="form1">
+        <h1>Course Request</h1>
+        <br />
+        <div>
+
+            First Name:<input id="firstName" class="form-control" /> <br />
+            Last Name:<input id="lastName" class="form-control" /> <br />
+            Address:<input id="address" class="form-control" /> <br />
+            Emal:<input id="email" class="form-control" /> <br />
+            Phone Number:<input id="phoneNumber" class="form-control" /> <br />
+            Course:<input id="course" class="form-control" /> <br />
+            Date Of Birth:<input id="dateOfBirth" type="date" class="form-control" /> <br />
+        </div>
+
+        <button type="button" id="save" class="btn btn-primary" onclick="guardarDatosForm();">Save</button>
+
+    </form>
+
+    <script>
+    function guardarDatosForm(){
+        var nuevo = {
+            firstName: $('#firstName').val(),
+            lastName: $('#lastName').val(),
+            address: $('#address').val(),
+            email: $('#email').val(),
+            phoneNumber: $('#phoneNumber').val(),
+            course: $('#course').val(),
+            dateOfBirth: $('#dateOfBirth').val()
+        }
+
+        $.ajax({
+            url: '@Url.Action("Create", "Form")',
+            type: 'POST',
+            data: {
+                collection: nuevo
+            },
+            success: function (resultado) {
+                
+                location.href = "../Form/Index";
+            },
+            error: function (error) {
+                console.log('Se encontró el siguiente error --> ' + error.state + ' : ' + error.statusText);
+            }
+        });
+    }
+    </script>
