@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Threading.Tasks;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
 
 namespace AppDEMO.Controllers
 {
@@ -92,5 +95,13 @@ namespace AppDEMO.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        [Route("Form/SpringCongratulations")]
+        public ActionResult SpringCongratulations()
+        {
+            return View();
+        }
+        
     }
 }

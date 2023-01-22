@@ -2,12 +2,97 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
 
-<div class="card">
-    <img src="~/Scripts/birthday.svg" alt="birthday" class="birthday">
-    <div class="text">
-        <h1>Congratulations!</h1>
-        <p>The form has been sent correctly</p>
-        <a class="btn btn-primary" href='@Url.Action("Create", "Form")'>Accept</a>
+<div class="container">
+    <button type="button" id="save" class="btn btn-primary" onclick="init();">To List</button>
+    <br />
+    <div class="col col-md-7">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Date Of Birth</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
     </div>
-    <div class="space"></div>
+    <div class="col col-md-5">
+        <img src="~/images/list.svg" />
+    </div>
+
 </div>
+
+<script>
+    
+    
+    function init() {
+        
+        $.ajax({
+            url: 'http://localhost:8080/getAllForms',
+            method: 'GET',
+            headers: { "Accept": "application/json; odata=verbose" },
+            success: function (resultado) {
+                createTable(resultado);
+            },
+            error: function (error) {
+                console.log('Se encontró el siguiente error --> ' + error.state + ' : ' + error.statusText);
+            }
+        });
+    }
+
+    function createTable(resultado) {
+
+        var tbody = document.querySelector("#tbody");
+        
+        resultado.forEach(item => {
+            
+            var tr = document.createElement("tr");
+            //firstName
+            var tdfirstName = document.createElement("td");
+            var txtfirstName = document.createTextNode(item.firstName);
+            tdfirstName.appendChild(txtfirstName);
+            tr.appendChild(tdfirstName);
+
+            //lastName
+            var tdlastName = document.createElement("td");
+            var txtlastName = document.createTextNode(item.lastName);
+            tdlastName.appendChild(txtlastName);
+            tr.appendChild(tdlastName);
+            //address
+            var tdaddress = document.createElement("td");
+            var txtaddress = document.createTextNode(item.address);
+            tdaddress.appendChild(txtaddress);
+            tr.appendChild(tdaddress);
+            //email
+            var tdemail = document.createElement("td");
+            var txtemail = document.createTextNode(item.email);
+            tdemail.appendChild(txtemail);
+            tr.appendChild(tdemail);
+            //phoneNumber
+            var tdphoneNumber = document.createElement("td");
+            var txtphoneNumber = document.createTextNode(item.phoneNumber);
+            tdphoneNumber.appendChild(txtphoneNumber);
+            tr.appendChild(tdphoneNumber);
+            //course
+            var tdcourse = document.createElement("td");
+            var txtcourse = document.createTextNode(item.course);
+            tdcourse.appendChild(txtcourse);
+            tr.appendChild(tdcourse);
+            //dateOfBirth
+            var tddateOfBirth = document.createElement("td");
+            var txtdateOfBirth = document.createTextNode(item.dateOfBirth);
+            tddateOfBirth.appendChild(txtdateOfBirth);
+            tr.appendChild(tddateOfBirth);
+            tbody.appendChild(tr);
+        });
+        
+    }
+        
+
+</script>

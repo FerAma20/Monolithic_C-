@@ -1,1 +1,104 @@
-﻿
+﻿<div class="container">
+    <br />
+    <h2>Create Form</h2>
+    <br />
+
+    <div class="col col-md-6">
+
+        <form>
+
+
+            <div class="col col-md-12">
+                <label for="firstName">First Name</label>
+                <div>
+                    <input class="form-control" type="text" name="firstName" id="firstName" required />
+                </div>
+            </div>
+            <div class="col col-md-12">
+                <br />
+                <label for="lastName">Last Name</label>
+                <div>
+                    <input class="form-control" type="text" name="lastName" id="lastName" required />
+                </div>
+            </div>
+
+            <div class="col col-md-12">
+                <br />
+                <label for="address">Address</label>
+                <div>
+                    <input class="form-control" type="text" name="address" id="address" required />
+                </div>
+            </div>
+            <div class="col col-md-12">
+                <br />
+                <label for="email">Email</label>
+                <div>
+                    <input class="form-control" type="email" name="email" id="email" required />
+                </div>
+            </div>
+            <br />
+            <div class="col col-md-12">
+                <label for="phoneNumber">Phone Number</label>
+                <div>
+                    <input class="form-control" type="text" name="phoneNumber" id="phoneNumber" required />
+                </div>
+            </div>
+            <div class="col col-md-12">
+                <br />
+                <label for="course">Course</label>
+                <div>
+                    <input class="form-control" type="text" name="course" id="course" required />
+                </div>
+            </div><br />
+            <div class="col col-md-12">
+                <br />
+                <label for="dateOfBirth">Date Of Birth</label>
+                <div>
+                    <input class="form-control" type="date" name="dateOfBirth" id="dateOfBirth" required />
+                </div>
+            </div>
+            <br />
+            <div class="col col-md-12">
+                <br />
+                <div>
+                    <button type="button" id="save" class="btn btn-primary" onclick="guardarDatosForm();">Save</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="col col-md-6">
+
+        <img src="~/images/createForm.svg" />
+    </div>
+
+    </div>
+
+<script>
+    function guardarDatosForm(){
+        var form = {
+                firstName: $('#firstName').val(),
+                lastName: $('#lastName').val(),
+                address: $('#address').val(),
+                email: $('#email').val(),
+                phoneNumber: $('#phoneNumber').val(),
+                course: $('#course').val(),
+                dateOfBirth: $('#dateOfBirth').val()
+        }
+        $.ajax({
+            url: 'http://localhost:8080/createForm',
+            method: 'POST',
+            data: JSON.stringify(form),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (resultado) {
+
+                location.href = "../Form/SpringCongratulations";
+            },
+            error: function (error) {
+                console.log('Se encontró el siguiente error --> ' + error.state + ' : ' + error.statusText);
+            }
+        });
+    }
+</script>
+

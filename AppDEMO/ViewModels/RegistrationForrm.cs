@@ -14,13 +14,13 @@ namespace AppDEMO.ViewModels
         private string email;
         private string phoneNumber;
         private string course;
-        private DateTime dateOfBirth;
+        private string dateOfBirth;
 
         public RegistrationForrm()
         {
         }
 
-        public RegistrationForrm(string firstName, string lastName, string address, string email, string phoneNumber, string course, DateTime dateOfBirth)
+        public RegistrationForrm(string firstName, string lastName, string address, string email, string phoneNumber, string course, string dateOfBirth)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -37,6 +37,6 @@ namespace AppDEMO.ViewModels
         public string Email { get => email; set => email = value; }
         public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public string Course { get => course; set => course = value; }
-        public DateTime DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
+        public string DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
     }
 }

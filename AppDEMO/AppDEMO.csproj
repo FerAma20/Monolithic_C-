@@ -137,6 +137,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\congratulations.svg" />
+    <Content Include="images\createForm.svg" />
+    <Content Include="images\list.svg" />
     <Content Include="Scripts\birthday.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -172,6 +175,7 @@
     <Content Include="Views\Form\Index.cshtml" />
     <Content Include="Scripts\StyleSheet1.scss" />
     <Content Include="Views\Form\SpringCreate.cshtml" />
+    <Content Include="Views\Form\SpringCongratulations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
